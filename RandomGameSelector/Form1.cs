@@ -5,10 +5,15 @@ using OfficeOpenXml;
 using System;
 using System.IO;
 
-
 using System.Data;
 using System.Windows.Forms;
 using System.Reflection.Emit;
+using Microsoft.VisualBasic.ApplicationServices;
+using RandomGameSelector.Properties;
+using Microsoft.VisualBasic;
+using System.Reflection.Metadata;
+using System.Xml.Linq;
+using System.Data.Common;
 
 namespace RandomGameSelector
 {
@@ -40,8 +45,78 @@ namespace RandomGameSelector
         }
 
 
+        public void CreateSettings() {
+            
+            try
+            {
+                //Pass the filepath and filename to the StreamWriter Constructor
+                StreamWriter sw = new StreamWriter("Selector_Settings.txt");
+                sw.WriteLine("Filename: Test_Game_Lists.xlsx");
+                sw.WriteLine("Sheet:Games_List");
+                sw.WriteLine("");
+                sw.WriteLine("Column 1:Recordable");
+                sw.WriteLine("Input 1:yes");
+                sw.WriteLine("");
+                sw.WriteLine("Column 2:Physical/Digital");
+                sw.WriteLine("Input 2:Digital");
+                sw.WriteLine("");
+                sw.WriteLine("Column 3:NA");
+                sw.WriteLine("Input 3:NA");
+                sw.WriteLine("");
+                sw.WriteLine("Place information from the xlsx file for the Filename, Sheet Name, Column name and required content of the cell.");
+                sw.WriteLine("Put NA for ignored options except for the first four.");
+
+                //Close the file
+                sw.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+
+        }
+
+
+        public string PullSettings() {
+            String settings;
+            try
+            {
+                //Pass the file path and file name to the StreamReader constructor
+                StreamReader sr = new StreamReader("Selector_Settings.txt");
+                //Read the first line of text
+                settings = sr.ReadLine();
+                //Continue to read until you reach end of file
+                while (settings != null)
+                {
+                    //write the line to console window
+                    Console.WriteLine(settings);
+                    //Read the next line
+                    settings = sr.ReadLine();
+                }
+                //close the file
+                sr.Close();
+                Console.ReadLine();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Executing finally block.");
+            }
+            return "setting";
+        }
+
+
         private void PullGameLists()
         {
+
+            PullSettings();
 
 
             ////Was from working with IronExcel but was slow and paid 
@@ -50,19 +125,10 @@ namespace RandomGameSelector
             //WorkSheet workSheet = workBook.GetWorkSheet("Games_List");
             //DataTable dataTable = workSheet.ToDataTable(true);
 
-
-
-            ////Can be used to replace path with a chosen file
-            //OpenFileDialog file = new OpenFileDialog(); //open dialog to choose file
-            //if (file.ShowDialog() == DialogResult.OK) //if there is a file chosen by the user
-            //{
-            //    string fileExt = Path.GetExtension(file.FileName); //get the file extension
-            //    if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
-            //    {
             try
             {
                 //Replace path with path to 
-                var path = @"Game_Lists.xlsx";
+                var path = @"Test_Game_Lists.xlsx";
                 var dataList = ExcelUtility.ExcelDataToDataTable(path, "Games_List", true);
 
                 //remove unrecordable, Got this from somewhere don't remember where
@@ -106,14 +172,20 @@ namespace RandomGameSelector
 
             }
 
-            //    }
-            //}
         }
 
 
         public Form1()
         {
             InitializeComponent();
+
+            //Check for settings file and create if missing
+            if (!File.Exists("Selector_Settings.txt"))
+            {
+                CreateSettings();
+            }
+            
+            //Initial pull for random games
             PullGameLists();
         }
 
@@ -139,6 +211,7 @@ namespace RandomGameSelector
 
         private void button1_Click(object sender, EventArgs e) //Showing pictures then rerolling choices
         {
+            //Reset picture visibility and reroll random games
             pictureBox1.Show();
             pictureBox2.Show();
             pictureBox3.Show();
