@@ -51,14 +51,14 @@ namespace RandomGameSelector
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
                 StreamWriter sw = new StreamWriter("Selector_Settings.txt");
-                sw.WriteLine("Filename:Test_Game_Lists.xlsx");
+                sw.WriteLine("Filename:Game_Lists.xlsx");
                 sw.WriteLine("Sheet:Games_List");
                 sw.WriteLine("");
                 sw.WriteLine("Column 1:Recordable");
                 sw.WriteLine("Input 1:yes");
                 sw.WriteLine("");
                 sw.WriteLine("Column 2:System");
-                sw.WriteLine("Input 2:Switch");
+                sw.WriteLine("Input 2:Nintendo Switch");
                 sw.WriteLine("");
                 sw.WriteLine("Column 3:Digital/Physical");
                 sw.WriteLine("Input 3:Digital");
@@ -184,11 +184,11 @@ namespace RandomGameSelector
 
                 }
                 // If AND then check cell contents of column 3 against both inputs 3 and 4
-                else if (Settings[6] == "AND") {
+                else if (Settings[8] == "AND") {
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
-                        if (dr[Settings[6]].ToString() != Settings[7] | dr[Settings[6]].ToString() != Settings[9] )
+                        if (dr[Settings[6]].ToString() != Settings[7] & dr[Settings[6]].ToString() != Settings[9] )
                             dr.Delete();
                     }
                     dataList.AcceptChanges();
