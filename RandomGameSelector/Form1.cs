@@ -219,13 +219,17 @@ namespace RandomGameSelector
                 
 
 
-                //Add Duplicate Prevention
+                //Added Duplicate Prevention, Doesn't check more than twice
                 //Generating the random number and need the same for each row
                 int RowNum = dataList.Rows.Count;
                 Random rnd = new Random();
                 int Bob = rnd.Next(RowNum);
                 int Bobb = rnd.Next(RowNum);
+                if (Bob == Bobb) { Bobb = rnd.Next(RowNum); }
+                if (Bob == Bobb) { Bobb = rnd.Next(RowNum); }
                 int Bobby = rnd.Next(RowNum);
+                if (Bob == Bobby | Bobb == Bobby) { Bobb = rnd.Next(RowNum); }
+                if (Bob == Bobby | Bobb == Bobby) { Bobb = rnd.Next(RowNum); }
 
                 //Post to Labels
                 label1.Text = dataList.Rows[Bob][0].ToString() + " \n" + dataList.Rows[Bob][1].ToString();
