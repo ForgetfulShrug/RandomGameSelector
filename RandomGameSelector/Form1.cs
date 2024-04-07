@@ -248,6 +248,12 @@ namespace RandomGameSelector
 
         public Form1()
         {
+            //Create Initialize Win10/InitializeWin10 if Windows 10
+
+            
+
+
+
             InitializeComponent();
 
             //Check for settings file and create if missing
