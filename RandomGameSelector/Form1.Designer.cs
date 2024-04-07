@@ -94,46 +94,44 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.None;
             label1.BackColor = Color.Transparent;
-            label1.Dock = DockStyle.Fill;
             label1.Font = new Font("Georgia", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(87, 0);
+            label1.Location = new Point(280, 288);
             label1.Name = "label1";
-            label1.Size = new Size(978, 640);
+            label1.Size = new Size(592, 64);
             label1.TabIndex = 3;
             label1.Text = "label1";
             label1.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
-            label2.AutoSize = true;
             label2.BackColor = Color.Transparent;
-            label2.Dock = DockStyle.Left;
             label2.Font = new Font("Georgia", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(0, 0);
+            label2.Location = new Point(16, 8);
             label2.MaximumSize = new Size(330, 0);
             label2.Name = "label2";
-            label2.Size = new Size(87, 31);
+            label2.Size = new Size(312, 160);
             label2.TabIndex = 1;
             label2.Text = "label2";
             label2.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // label3
             // 
-            label3.AutoSize = true;
+            label3.Anchor = AnchorStyles.None;
             label3.BackColor = Color.Transparent;
-            label3.Dock = DockStyle.Right;
             label3.Font = new Font("Georgia", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(1065, 0);
+            label3.Location = new Point(824, 8);
             label3.MaximumSize = new Size(330, 0);
             label3.Name = "label3";
-            label3.Size = new Size(87, 31);
+            label3.Size = new Size(312, 160);
             label3.TabIndex = 1;
             label3.Text = "label3";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // pictureBox4
             // 
+            pictureBox4.BackColor = Color.Transparent;
             pictureBox4.BackgroundImage = Properties.Resources.Back_Layer_Complete_Signs1;
             pictureBox4.Location = new Point(0, 0);
             pictureBox4.MaximumSize = new Size(1152, 640);
@@ -150,9 +148,9 @@
             BackColor = Color.WhiteSmoke;
             BackgroundImage = Properties.Resources.Back_Layer_Complete_Signs1;
             ClientSize = new Size(1152, 640);
-            Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
             Controls.Add(pictureBox1);
+            Controls.Add(pictureBox3);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(label2);
@@ -166,7 +164,6 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
