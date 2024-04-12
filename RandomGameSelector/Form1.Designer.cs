@@ -35,17 +35,16 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
-            pictureBox4 = new PictureBox();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             SuspendLayout();
             // 
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.Gasha_Nut_Blue_Backed;
             pictureBox1.Location = new Point(0, 0);
+            pictureBox1.Margin = new Padding(3, 2, 3, 2);
             pictureBox1.MaximumSize = new Size(384, 640);
             pictureBox1.MinimumSize = new Size(384, 640);
             pictureBox1.Name = "pictureBox1";
@@ -59,6 +58,7 @@
             pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox3.Image = Properties.Resources.Gasha_Nut_Green_Backed;
             pictureBox3.Location = new Point(768, 0);
+            pictureBox3.Margin = new Padding(3, 2, 3, 2);
             pictureBox3.MaximumSize = new Size(384, 640);
             pictureBox3.MinimumSize = new Size(384, 640);
             pictureBox3.Name = "pictureBox3";
@@ -72,6 +72,7 @@
             pictureBox2.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             pictureBox2.Image = Properties.Resources.Gasha_Nut_Red_Backed;
             pictureBox2.Location = new Point(384, 128);
+            pictureBox2.Margin = new Padding(3, 2, 3, 2);
             pictureBox2.MaximumSize = new Size(384, 640);
             pictureBox2.MinimumSize = new Size(384, 640);
             pictureBox2.Name = "pictureBox2";
@@ -84,9 +85,10 @@
             // 
             button1.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             button1.Font = new Font("Georgia", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            button1.Location = new Point(528, 469);
+            button1.Location = new Point(532, 579);
+            button1.Margin = new Padding(3, 2, 3, 2);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(83, 29);
             button1.TabIndex = 1;
             button1.Text = "Reroll";
             button1.UseVisualStyleBackColor = true;
@@ -97,9 +99,9 @@
             label1.Anchor = AnchorStyles.None;
             label1.BackColor = Color.Transparent;
             label1.Font = new Font("Georgia", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(280, 288);
+            label1.Location = new Point(317, 295);
             label1.Name = "label1";
-            label1.Size = new Size(592, 64);
+            label1.Size = new Size(518, 48);
             label1.TabIndex = 3;
             label1.Text = "label1";
             label1.TextAlign = ContentAlignment.MiddleCenter;
@@ -108,10 +110,9 @@
             // 
             label2.BackColor = Color.Transparent;
             label2.Font = new Font("Georgia", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(16, 8);
-            label2.MaximumSize = new Size(330, 0);
+            label2.Location = new Point(24, 9);
             label2.Name = "label2";
-            label2.Size = new Size(312, 160);
+            label2.Size = new Size(296, 168);
             label2.TabIndex = 1;
             label2.Text = "label2";
             label2.TextAlign = ContentAlignment.MiddleCenter;
@@ -121,48 +122,34 @@
             label3.Anchor = AnchorStyles.None;
             label3.BackColor = Color.Transparent;
             label3.Font = new Font("Georgia", 16F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(824, 8);
-            label3.MaximumSize = new Size(330, 0);
+            label3.Location = new Point(832, 9);
             label3.Name = "label3";
-            label3.Size = new Size(312, 160);
+            label3.Size = new Size(296, 168);
             label3.TabIndex = 1;
             label3.Text = "label3";
             label3.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.Transparent;
-            pictureBox4.BackgroundImage = Properties.Resources.Back_Layer_Complete_Signs1;
-            pictureBox4.Location = new Point(0, 0);
-            pictureBox4.MaximumSize = new Size(1152, 640);
-            pictureBox4.MinimumSize = new Size(1152, 640);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(1152, 640);
-            pictureBox4.TabIndex = 12;
-            pictureBox4.TabStop = false;
-            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.WhiteSmoke;
             BackgroundImage = Properties.Resources.Back_Layer_Complete_Signs1;
-            ClientSize = new Size(1152, 640);
-            Controls.Add(pictureBox2);
+            ClientSize = new Size(1152, 639);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox3);
+            Controls.Add(pictureBox2);
             Controls.Add(button1);
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(label3);
-            Controls.Add(pictureBox4);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Game Randomizer";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             ResumeLayout(false);
         }
 
@@ -174,6 +161,5 @@
         private Label label1;
         private Label label2;
         private Label label3;
-        private PictureBox pictureBox4;
     }
 }
