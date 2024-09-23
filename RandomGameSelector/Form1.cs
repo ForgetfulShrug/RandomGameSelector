@@ -17,6 +17,7 @@ using System.Data.Common;
 
 namespace RandomGameSelector
 {
+
     public partial class Form1 : Form
     {
 
@@ -45,8 +46,9 @@ namespace RandomGameSelector
         }
 
 
-        public void CreateSettings() {
-            
+        public void CreateSettings()
+        {
+
             try
             {
                 //Pass the filepath and filename to the StreamWriter Constructor
@@ -86,22 +88,23 @@ namespace RandomGameSelector
         }
 
 
-        public string[] PullSettings() {
-            String[] Settings = new string[10];
+        public string[] PullSettings()
+        {
+            String[] Settings = new string[20];
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
                 StreamReader sr = new StreamReader("Selector_Settings.txt");
                 //Read Filename, Sheet, Columns, and required Cell contents
-                Settings[0] = sr.ReadLine().Replace("Filename:","").TrimStart(' ');
+                Settings[0] = sr.ReadLine().Replace("Filename:", "").TrimStart(' ');
                 Settings[1] = sr.ReadLine().Replace("Sheet:", "").TrimStart(' ');
-                 sr.ReadLine();
+                sr.ReadLine();
                 Settings[2] = sr.ReadLine().Replace("Column 1:", "").TrimStart(' ');
                 Settings[3] = sr.ReadLine().Replace("Input 1:", "").TrimStart(' ');
-                 sr.ReadLine();
+                sr.ReadLine();
                 Settings[4] = sr.ReadLine().Replace("Column 2:", "").TrimStart(' ');
                 Settings[5] = sr.ReadLine().Replace("Input 2:", "").TrimStart(' ');
-                 sr.ReadLine();
+                sr.ReadLine();
                 Settings[6] = sr.ReadLine().Replace("Column 3:", "").TrimStart(' ');
                 Settings[7] = sr.ReadLine().Replace("Input 3:", "").TrimStart(' ');
                 sr.ReadLine();
@@ -127,7 +130,7 @@ namespace RandomGameSelector
         {
 
             //Initialize Settings;
-            String[] Settings = new string[10];
+            String[] Settings = new string[20];
             Settings = PullSettings();
 
 
@@ -150,13 +153,14 @@ namespace RandomGameSelector
                 {
                     DataRow dr = dataList.Rows[i];
                     if (!dr[Settings[2]].ToString().Contains(Settings[3]))
-                            dr.Delete();
+                        dr.Delete();
                 }
                 dataList.AcceptChanges();
 
 
                 //Check if NA for 2nd Column and if not check more Cells for input column
-                if (Settings[4] != "NA") {
+                if (Settings[4] != "NA")
+                {
 
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
@@ -178,18 +182,19 @@ namespace RandomGameSelector
                     {
                         DataRow dr = dataList.Rows[i];
                         if (!dr[Settings[6]].ToString().Contains(Settings[7]))
-                                dr.Delete();
+                            dr.Delete();
                     }
                     dataList.AcceptChanges();
 
                 }
                 // If AND then check cell contents of column 3 against both inputs 3 and 4
-                else if (Settings[8] == "AND") {
+                else if (Settings[8] == "AND")
+                {
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
                         if (!dr[Settings[6]].ToString().Contains(Settings[7]) & !dr[Settings[6]].ToString().Contains(Settings[9]))
-                                dr.Delete();
+                            dr.Delete();
                     }
                     dataList.AcceptChanges();
                 }
@@ -202,7 +207,7 @@ namespace RandomGameSelector
                     {
                         DataRow dr = dataList.Rows[i];
                         if (!dr[Settings[8]].ToString().Contains(Settings[9]))
-                                dr.Delete();
+                            dr.Delete();
                     }
 
                     dataList.AcceptChanges();
@@ -216,7 +221,7 @@ namespace RandomGameSelector
                     dataList.Columns.RemoveAt(3);
                 }
 
-                
+
 
 
                 //Added Duplicate Prevention, Doesn't check more than twice
@@ -250,7 +255,7 @@ namespace RandomGameSelector
         {
             //Create Initialize Win10/InitializeWin10 if Windows 10
 
-            
+
 
 
 
@@ -261,7 +266,7 @@ namespace RandomGameSelector
             {
                 CreateSettings();
             }
-            
+
             //Initial pull for random games
             PullGameLists();
         }
@@ -293,6 +298,12 @@ namespace RandomGameSelector
             pictureBox2.Show();
             pictureBox3.Show();
             PullGameLists();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var form2 = new Form2();
+            form2.Show();
         }
     }
 }
