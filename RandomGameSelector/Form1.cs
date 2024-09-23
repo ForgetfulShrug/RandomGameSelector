@@ -14,6 +14,7 @@ using Microsoft.VisualBasic;
 using System.Reflection.Metadata;
 using System.Xml.Linq;
 using System.Data.Common;
+using static System.Net.WebRequestMethods;
 
 namespace RandomGameSelector
 {
@@ -110,6 +111,19 @@ namespace RandomGameSelector
                 sr.ReadLine();
                 Settings[8] = sr.ReadLine().Replace("Column 4:", "").TrimStart(' ');
                 Settings[9] = sr.ReadLine().Replace("Input 4:", "").TrimStart(' ');
+                sr.ReadLine();
+                Settings[10] = sr.ReadLine().Replace("Locked 1:", "").TrimStart(' ');
+                Settings[11] = sr.ReadLine().Replace("Locked 2:", "").TrimStart(' ');
+                Settings[12] = sr.ReadLine().Replace("Locked 3:", "").TrimStart(' ');
+                Settings[13] = sr.ReadLine().Replace("Locked 4:", "").TrimStart(' ');
+                sr.ReadLine();
+                Settings[14] = sr.ReadLine().Replace("OR Row 2:", "").TrimStart(' ');
+                Settings[15] = sr.ReadLine().Replace("OR Row 3:", "").TrimStart(' ');
+                Settings[16] = sr.ReadLine().Replace("OR Row 4:", "").TrimStart(' ');
+                sr.ReadLine();
+                Settings[17] = sr.ReadLine().Replace("AND Row 2:", "").TrimStart(' ');
+                Settings[18] = sr.ReadLine().Replace("AND Row 3:", "").TrimStart(' ');
+                Settings[19] = sr.ReadLine().Replace("AND Row 4:", "").TrimStart(' ');
 
                 sr.Close();
                 Console.ReadLine();
@@ -149,17 +163,19 @@ namespace RandomGameSelector
 
 
                 // Column 1 Check for Cell input and delete lacking rows
-                for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                if (Settings[10].Equals("False"))
                 {
-                    DataRow dr = dataList.Rows[i];
-                    if (!dr[Settings[2]].ToString().Contains(Settings[3]))
-                        dr.Delete();
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if (!dr[Settings[2]].ToString().Contains(Settings[3]))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
                 }
-                dataList.AcceptChanges();
-
 
                 //Check if NA for 2nd Column and if not check more Cells for input column
-                if (Settings[4] != "NA")
+                if (Settings[11].Equals("False"))
                 {
 
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
@@ -175,7 +191,7 @@ namespace RandomGameSelector
 
 
                 //Check if NA/AND for 3rd Column and if not check more Cells for input column
-                if (Settings[6] != "NA" & Settings[8] != "AND")
+                if (Settings[12].Equals("False") & Settings[18].Equals("False"))
                 {
 
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
@@ -200,7 +216,7 @@ namespace RandomGameSelector
                 }
 
                 // If not NA or AND then remove rows of cell not equal to input
-                if (Settings[8] != "NA" & Settings[8] != "AND")
+                if (Settings[13].Equals("False") & Settings[19].Equals("False"))
                 {
 
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
@@ -262,7 +278,7 @@ namespace RandomGameSelector
             InitializeComponent();
 
             //Check for settings file and create if missing
-            if (!File.Exists("Selector_Settings.txt"))
+            if (!System.IO.File.Exists("Selector_Settings.txt"))
             {
                 CreateSettings();
             }

@@ -25,7 +25,7 @@ namespace RandomGameSelector
         //Pull Current Settings
         public string[] PullSettings()
         {
-            String[] Settings = new string[10];
+            String[] Settings = new string[20];
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
@@ -45,6 +45,19 @@ namespace RandomGameSelector
                 sr.ReadLine();
                 Settings[8] = sr.ReadLine().Replace("Column 4:", "").TrimStart(' ');
                 Settings[9] = sr.ReadLine().Replace("Input 4:", "").TrimStart(' ');
+                sr.ReadLine();
+                Settings[10] = sr.ReadLine().Replace("Locked 1:", "").TrimStart(' ');
+                Settings[11] = sr.ReadLine().Replace("Locked 2:", "").TrimStart(' ');
+                Settings[12] = sr.ReadLine().Replace("Locked 3:", "").TrimStart(' ');
+                Settings[13] = sr.ReadLine().Replace("Locked 4:", "").TrimStart(' ');
+                sr.ReadLine();
+                Settings[14] = sr.ReadLine().Replace("OR Row 2:", "").TrimStart(' ');
+                Settings[15] = sr.ReadLine().Replace("OR Row 3:", "").TrimStart(' ');
+                Settings[16] = sr.ReadLine().Replace("OR Row 4:", "").TrimStart(' ');
+                sr.ReadLine();
+                Settings[17] = sr.ReadLine().Replace("AND Row 2:", "").TrimStart(' ');
+                Settings[18] = sr.ReadLine().Replace("AND Row 3:", "").TrimStart(' ');
+                Settings[19] = sr.ReadLine().Replace("AND Row 4:", "").TrimStart(' ');
 
                 sr.Close();
                 Console.ReadLine();
@@ -74,6 +87,16 @@ namespace RandomGameSelector
             textBox8.Text = WSettings[7].ToString();
             textBox9.Text = WSettings[8].ToString();
             textBox10.Text = WSettings[9].ToString();
+            checkBox1.Checked = WSettings[10].Equals("True");
+            checkBox2.Checked = WSettings[11].Equals("True");
+            checkBox3.Checked = WSettings[12].Equals("True");
+            checkBox4.Checked = WSettings[13].Equals("True");
+            checkBox5.Checked = WSettings[14].Equals("True");
+            checkBox6.Checked = WSettings[15].Equals("True");
+            checkBox7.Checked = WSettings[16].Equals("True");
+            checkBox8.Checked = WSettings[17].Equals("True");
+            checkBox9.Checked = WSettings[18].Equals("True");
+            checkBox10.Checked = WSettings[19].Equals("True");
         }
 
         private void SaveSettings()
@@ -98,15 +121,20 @@ namespace RandomGameSelector
                 sw.WriteLine("Column 4:" + textBox9.Text);
                 sw.WriteLine("Input 4:" + textBox10.Text);
                 sw.WriteLine("");
-                sw.WriteLine("Locked:");
+                sw.WriteLine("Locked 1:" + checkBox1.Checked);
+                sw.WriteLine("Locked 2:" + checkBox2.Checked);
+                sw.WriteLine("Locked 3:" + checkBox3.Checked);
+                sw.WriteLine("Locked 4:" + checkBox4.Checked);
                 sw.WriteLine("");
-                sw.WriteLine("OR");
+                sw.WriteLine("OR Row 2:" + checkBox5.Checked);
+                sw.WriteLine("OR Row 3:" + checkBox6.Checked);
+                sw.WriteLine("OR Row 4:" + checkBox7.Checked);
                 sw.WriteLine("");
-                sw.WriteLine("AND");
+                sw.WriteLine("AND Row 2:" + checkBox8.Checked);
+                sw.WriteLine("AND Row 3:" + checkBox9.Checked);
+                sw.WriteLine("AND Row 4:" + checkBox10.Checked);
                 sw.WriteLine("");
                 sw.WriteLine("Place information from the xlsx file for the Filename, Sheet Name, Column name and required content of the cell.");
-                sw.WriteLine("Put NA for ignored Columns except for the first");
-                sw.WriteLine("Put AND for Column 4 for OR Operator with 3/4 options");
                 sw.WriteLine("Input xlsx needs Title and Console in first two rows");
 
                 //Close the file
@@ -126,7 +154,7 @@ namespace RandomGameSelector
 
         public Form2()
         {
-            String[] Settings = new string[10];
+            String[] Settings = new string[20];
             Settings = PullSettings();
 
             InitializeComponent();
@@ -146,61 +174,61 @@ namespace RandomGameSelector
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox1.Checked) { textBox3.Text = "NA"; textBox3.ReadOnly = true; }
+            if (checkBox1.Checked) { textBox3.ReadOnly = true; }
             if (!checkBox1.Checked) { textBox3.ReadOnly = false; }
         }
 
         private void checkBox2_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox2.Checked) { textBox5.Text = "NA"; textBox5.ReadOnly = true; }
+            if (checkBox2.Checked) { textBox5.ReadOnly = true; }
             if (!checkBox2.Checked & !checkBox5.Checked & !checkBox8.Checked) { textBox5.ReadOnly = false; }
         }
 
         private void checkBox3_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox3.Checked) { textBox7.Text = "NA"; textBox7.ReadOnly = true; }
+            if (checkBox3.Checked) { textBox7.ReadOnly = true; }
             if (!checkBox3.Checked & !checkBox6.Checked & !checkBox9.Checked) { textBox7.ReadOnly = false; }
         }
 
         private void checkBox4_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox4.Checked) { textBox9.Text = "NA"; textBox9.ReadOnly = true; }
+            if (checkBox4.Checked) { textBox9.ReadOnly = true; }
             if (!checkBox4.Checked & !checkBox7.Checked & !checkBox10.Checked) { textBox9.ReadOnly = false; }
         }
 
         private void checkBox5_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox5.Checked) { textBox5.Text = "OR"; textBox5.ReadOnly = true; }
+            if (checkBox5.Checked) { textBox5.ReadOnly = true; }
             if (!checkBox2.Checked & !checkBox5.Checked & !checkBox8.Checked) { textBox5.ReadOnly = false; }
         }
 
         private void checkBox6_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox6.Checked) { textBox7.Text = "OR"; textBox7.ReadOnly = true; }
+            if (checkBox6.Checked) { textBox7.ReadOnly = true; }
             if (!checkBox3.Checked & !checkBox6.Checked & !checkBox9.Checked) { textBox7.ReadOnly = false; }
         }
 
         private void checkBox7_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox7.Checked) { textBox9.Text = "OR"; textBox9.ReadOnly = true; }
+            if (checkBox7.Checked) { textBox9.ReadOnly = true; }
             if (!checkBox4.Checked & !checkBox7.Checked & !checkBox10.Checked) { textBox9.ReadOnly = false; }
         }
 
         private void checkBox8_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox8.Checked) { textBox5.Text = "AND"; textBox5.ReadOnly = true; }
+            if (checkBox8.Checked) { textBox5.ReadOnly = true; }
             if (!checkBox2.Checked & !checkBox5.Checked & !checkBox8.Checked) { textBox5.ReadOnly = false; }
         }
 
         private void checkBox9_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox9.Checked) { textBox7.Text = "AND"; textBox7.ReadOnly = true; }
+            if (checkBox9.Checked) { textBox7.ReadOnly = true; }
             if (!checkBox3.Checked &!checkBox6.Checked & !checkBox9.Checked) { textBox7.ReadOnly = false; }
         }
 
         private void checkBox10_CheckedChanged(object sender, EventArgs e)
         {
-            if (checkBox10.Checked) { textBox9.Text = "AND"; textBox9.ReadOnly = true; }
+            if (checkBox10.Checked) { textBox9.ReadOnly = true; }
             if (!checkBox4.Checked & !checkBox7.Checked & !checkBox10.Checked) { textBox9.ReadOnly = false; }
         }
     }
