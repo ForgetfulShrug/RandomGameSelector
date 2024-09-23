@@ -57,14 +57,14 @@ namespace RandomGameSelector
                 sw.WriteLine("Column 1:Recordable");
                 sw.WriteLine("Input 1:yes");
                 sw.WriteLine("");
-                sw.WriteLine("Column 2:System");
+                sw.WriteLine("Column 2:NA");
                 sw.WriteLine("Input 2:Nintendo Switch");
                 sw.WriteLine("");
                 sw.WriteLine("Column 3:Digital/Physical");
                 sw.WriteLine("Input 3:Digital");
                 sw.WriteLine("");
                 sw.WriteLine("Column 4:AND");
-                sw.WriteLine("Input 4:Both");
+                sw.WriteLine("Input 4:Physical");
                 sw.WriteLine("");
                 sw.WriteLine("Place information from the xlsx file for the Filename, Sheet Name, Column name and required content of the cell.");
                 sw.WriteLine("Put NA for ignored Columns except for the first");
@@ -149,8 +149,8 @@ namespace RandomGameSelector
                 for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                 {
                     DataRow dr = dataList.Rows[i];
-                    if (dr[Settings[2]].ToString() != Settings[3])
-                        dr.Delete();
+                    if (!dr[Settings[2]].ToString().Contains(Settings[3]))
+                            dr.Delete();
                 }
                 dataList.AcceptChanges();
 
@@ -161,7 +161,7 @@ namespace RandomGameSelector
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
-                        if (dr[Settings[4]].ToString() != Settings[5])
+                        if (!dr[Settings[4]].ToString().Contains(Settings[5]))
                             dr.Delete();
                     }
 
@@ -177,8 +177,8 @@ namespace RandomGameSelector
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
-                        if (dr[Settings[6]].ToString() != Settings[7])
-                            dr.Delete();
+                        if (!dr[Settings[6]].ToString().Contains(Settings[7]))
+                                dr.Delete();
                     }
                     dataList.AcceptChanges();
 
@@ -188,8 +188,8 @@ namespace RandomGameSelector
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
-                        if (dr[Settings[6]].ToString() != Settings[7] & dr[Settings[6]].ToString() != Settings[9] )
-                            dr.Delete();
+                        if (!dr[Settings[6]].ToString().Contains(Settings[7]) & !dr[Settings[6]].ToString().Contains(Settings[9]))
+                                dr.Delete();
                     }
                     dataList.AcceptChanges();
                 }
@@ -201,8 +201,8 @@ namespace RandomGameSelector
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
-                        if (dr[Settings[8]].ToString() != Settings[9])
-                            dr.Delete();
+                        if (!dr[Settings[8]].ToString().Contains(Settings[9]))
+                                dr.Delete();
                     }
 
                     dataList.AcceptChanges();
