@@ -132,7 +132,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(451, 579);
+            button2.Location = new Point(540, 609);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 7;
@@ -147,7 +147,6 @@
             BackColor = Color.WhiteSmoke;
             BackgroundImage = Properties.Resources.Back_Layer_Complete_Signs1;
             ClientSize = new Size(1152, 639);
-            Controls.Add(button2);
             Controls.Add(pictureBox1);
             Controls.Add(pictureBox3);
             Controls.Add(pictureBox2);
@@ -155,6 +154,7 @@
             Controls.Add(label1);
             Controls.Add(label2);
             Controls.Add(label3);
+            Controls.Add(button2);
             Margin = new Padding(3, 2, 3, 2);
             Name = "Form1";
             Text = "Game Randomizer";

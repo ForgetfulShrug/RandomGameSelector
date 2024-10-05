@@ -15,6 +15,7 @@ using System.Reflection.Metadata;
 using System.Xml.Linq;
 using System.Data.Common;
 using static System.Net.WebRequestMethods;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Button;
 
 namespace RandomGameSelector
 {
@@ -60,18 +61,29 @@ namespace RandomGameSelector
                 sw.WriteLine("Column 1:Recordable");
                 sw.WriteLine("Input 1:yes");
                 sw.WriteLine("");
-                sw.WriteLine("Column 2:NA");
+                sw.WriteLine("Column 2:System");
                 sw.WriteLine("Input 2:Nintendo Switch");
                 sw.WriteLine("");
                 sw.WriteLine("Column 3:Digital/Physical");
                 sw.WriteLine("Input 3:Digital");
                 sw.WriteLine("");
-                sw.WriteLine("Column 4:AND");
+                sw.WriteLine("Column 4:Content");
                 sw.WriteLine("Input 4:Physical");
                 sw.WriteLine("");
+                sw.WriteLine("Locked 1:");
+                sw.WriteLine("Locked 2:");
+                sw.WriteLine("Locked 3:");
+                sw.WriteLine("Locked 4:");
+                sw.WriteLine("");
+                sw.WriteLine("OR Row 2:False");
+                sw.WriteLine("OR Row 3:False");
+                sw.WriteLine("OR Row 4:True");
+                sw.WriteLine("");
+                //sw.WriteLine("AND Row 2:" + checkBox8.Checked);
+                //sw.WriteLine("AND Row 3:" + checkBox9.Checked);
+                //sw.WriteLine("AND Row 4:" + checkBox10.Checked);
+                //sw.WriteLine("");
                 sw.WriteLine("Place information from the xlsx file for the Filename, Sheet Name, Column name and required content of the cell.");
-                sw.WriteLine("Put NA for ignored Columns except for the first");
-                sw.WriteLine("Put AND for Column 4 for OR Operator with 3/4 options");
                 sw.WriteLine("Input xlsx needs Title and Console in first two rows");
 
                 //Close the file
@@ -91,7 +103,7 @@ namespace RandomGameSelector
 
         public string[] PullSettings()
         {
-            String[] Settings = new string[20];
+            String[] Settings = new string[17];
             try
             {
                 //Pass the file path and file name to the StreamReader constructor
@@ -120,10 +132,10 @@ namespace RandomGameSelector
                 Settings[14] = sr.ReadLine().Replace("OR Row 2:", "").TrimStart(' ');
                 Settings[15] = sr.ReadLine().Replace("OR Row 3:", "").TrimStart(' ');
                 Settings[16] = sr.ReadLine().Replace("OR Row 4:", "").TrimStart(' ');
-                sr.ReadLine();
-                Settings[17] = sr.ReadLine().Replace("AND Row 2:", "").TrimStart(' ');
-                Settings[18] = sr.ReadLine().Replace("AND Row 3:", "").TrimStart(' ');
-                Settings[19] = sr.ReadLine().Replace("AND Row 4:", "").TrimStart(' ');
+                //sr.ReadLine();
+                //Settings[17] = sr.ReadLine().Replace("AND Row 2:", "").TrimStart(' ');
+                //Settings[18] = sr.ReadLine().Replace("AND Row 3:", "").TrimStart(' ');
+                //Settings[19] = sr.ReadLine().Replace("AND Row 4:", "").TrimStart(' ');
 
                 sr.Close();
                 Console.ReadLine();
@@ -144,7 +156,7 @@ namespace RandomGameSelector
         {
 
             //Initialize Settings;
-            String[] Settings = new string[20];
+            String[] Settings = new string[17];
             Settings = PullSettings();
 
 
@@ -162,8 +174,38 @@ namespace RandomGameSelector
 
 
 
-                // Column 1 Check for Cell input and delete lacking rows
-                if (Settings[10].Equals("False"))
+                // Column 1 Check for Cell input and delete lacking rows Check for OR Operators/////////////////////////////////////////////////////////////////////////////////////
+                if (Settings[10].Equals("False") & Settings[14].Equals("True") & Settings[15].Equals("True") & Settings[16].Equals("True"))
+                {
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if ((!dr[Settings[2]].ToString().Contains(Settings[3]) & !dr[Settings[2]].ToString().Contains(Settings[5]) & !dr[Settings[2]].ToString().Contains(Settings[7]) & !dr[Settings[2]].ToString().Contains(Settings[9])))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
+                }
+                else if (Settings[10].Equals("False") & Settings[14].Equals("True") & Settings[15].Equals("True"))
+                {
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if ((!dr[Settings[2]].ToString().Contains(Settings[3]) & !dr[Settings[2]].ToString().Contains(Settings[5]) & !dr[Settings[2]].ToString().Contains(Settings[7])))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
+                }
+                else if (Settings[10].Equals("False") & Settings[14].Equals("True"))
+                {
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if ((!dr[Settings[2]].ToString().Contains(Settings[3]) & !dr[Settings[2]].ToString().Contains(Settings[5])))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
+                }
+                else if (Settings[10].Equals("False"))
                 {
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
@@ -174,26 +216,50 @@ namespace RandomGameSelector
                     dataList.AcceptChanges();
                 }
 
-                //Check if NA for 2nd Column and if not check more Cells for input column
-                if (Settings[11].Equals("False"))
+                // Column 2 Check for Cell input and delete lacking rows Check for OR Operators////////////////////////////////////////////////////////////////////////////////////////
+                if (Settings[11].Equals("False") & Settings[14].Equals("False") & Settings[15].Equals("True") & Settings[16].Equals("True"))
                 {
-
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if ((!dr[Settings[4]].ToString().Contains(Settings[5]) & !dr[Settings[4]].ToString().Contains(Settings[7]) & !dr[Settings[4]].ToString().Contains(Settings[9])))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
+                }
+                else if (Settings[11].Equals("False") & Settings[14].Equals("False") & Settings[15].Equals("True"))
+                {
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if ((!dr[Settings[4]].ToString().Contains(Settings[5]) & !dr[Settings[4]].ToString().Contains(Settings[7])))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
+                }
+                else if (Settings[11].Equals("False") & Settings[14].Equals("False"))
+                {
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
                         if (!dr[Settings[4]].ToString().Contains(Settings[5]))
                             dr.Delete();
                     }
-
                     dataList.AcceptChanges();
-
                 }
-
-
-                //Check if NA/AND for 3rd Column and if not check more Cells for input column
-                if (Settings[12].Equals("False") & Settings[18].Equals("False"))
+                // Column 3 Check for Cell input and delete lacking rows Check for OR Operators/////////////////////////////////////////////////////////////////////////////////////
+                if (Settings[12].Equals("False") & Settings[15].Equals("False") & Settings[16].Equals("True"))
                 {
-
+                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                    {
+                        DataRow dr = dataList.Rows[i];
+                        if ((!dr[Settings[6]].ToString().Contains(Settings[7]) & !dr[Settings[6]].ToString().Contains(Settings[9])))
+                            dr.Delete();
+                    }
+                    dataList.AcceptChanges();
+                }
+                else if (Settings[12].Equals("False") & Settings[15].Equals("False"))
+                {
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
@@ -201,34 +267,74 @@ namespace RandomGameSelector
                             dr.Delete();
                     }
                     dataList.AcceptChanges();
-
                 }
-                // If AND then check cell contents of column 3 against both inputs 3 and 4
-                else if (Settings[8] == "AND")
+                // Column 4 Check for Cell input and delete lacking rows Check for OR Operators
+                if (Settings[13].Equals("False") & Settings[16].Equals("False"))
                 {
-                    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
-                    {
-                        DataRow dr = dataList.Rows[i];
-                        if (!dr[Settings[6]].ToString().Contains(Settings[7]) & !dr[Settings[6]].ToString().Contains(Settings[9]))
-                            dr.Delete();
-                    }
-                    dataList.AcceptChanges();
-                }
-
-                // If not NA or AND then remove rows of cell not equal to input
-                if (Settings[13].Equals("False") & Settings[19].Equals("False"))
-                {
-
                     for (int i = dataList.Rows.Count - 1; i >= 0; i--)
                     {
                         DataRow dr = dataList.Rows[i];
                         if (!dr[Settings[8]].ToString().Contains(Settings[9]))
                             dr.Delete();
                     }
-
                     dataList.AcceptChanges();
-
                 }
+
+                ////Check if NA for 2nd Column and if not check more Cells for input column
+                //if (Settings[11].Equals("False"))
+                //{
+
+                //    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                //    {
+                //        DataRow dr = dataList.Rows[i];
+                //        if (!dr[Settings[4]].ToString().Contains(Settings[5]))
+                //            dr.Delete();
+                //    }
+
+                //    dataList.AcceptChanges();
+
+                //}
+
+
+                ////Check if NA/AND for 3rd Column and if not check more Cells for input column
+                //if (Settings[12].Equals("False") & Settings[16].Equals("False"))
+                //{
+
+                //    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                //    {
+                //        DataRow dr = dataList.Rows[i];
+                //        if (!dr[Settings[6]].ToString().Contains(Settings[7]))
+                //            dr.Delete();
+                //    }
+                //    dataList.AcceptChanges();
+
+                //}
+                //// If AND then check cell contents of column 3 against both inputs 3 and 4
+                //else if (Settings[16].Equals("False"))
+                //{
+                //    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                //    {
+                //        DataRow dr = dataList.Rows[i];
+                //        if (!dr[Settings[6]].ToString().Contains(Settings[7]) & !dr[Settings[6]].ToString().Contains(Settings[9]))
+                //            dr.Delete();
+                //    }
+                //    dataList.AcceptChanges();
+                //}
+
+                //// If not NA or AND then remove rows of cell not equal to input
+                //if (Settings[13].Equals("False") & Settings[16].Equals("False"))
+                //{
+
+                //    for (int i = dataList.Rows.Count - 1; i >= 0; i--)
+                //    {
+                //        DataRow dr = dataList.Rows[i];
+                //        if (!dr[Settings[8]].ToString().Contains(Settings[9]))
+                //            dr.Delete();
+                //    }
+
+                //    dataList.AcceptChanges();
+
+                //}
 
 
                 // Remove Excess Columns
@@ -238,7 +344,7 @@ namespace RandomGameSelector
                 }
 
 
-
+                //Realzing I might be able to check for the requirements after randmizing the row, though not sure if that'd skew anything more
 
                 //Added Duplicate Prevention, Doesn't check more than twice
                 //Generating the random number and need the same for each row

@@ -58,7 +58,7 @@
             // checkBox1
             // 
             checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(252, 103);
+            checkBox1.Location = new Point(296, 103);
             checkBox1.Name = "checkBox1";
             checkBox1.Size = new Size(60, 19);
             checkBox1.TabIndex = 0;
@@ -69,7 +69,7 @@
             // checkBox2
             // 
             checkBox2.AutoSize = true;
-            checkBox2.Location = new Point(252, 128);
+            checkBox2.Location = new Point(296, 128);
             checkBox2.Name = "checkBox2";
             checkBox2.Size = new Size(60, 19);
             checkBox2.TabIndex = 1;
@@ -80,7 +80,7 @@
             // checkBox3
             // 
             checkBox3.AutoSize = true;
-            checkBox3.Location = new Point(252, 153);
+            checkBox3.Location = new Point(296, 153);
             checkBox3.Name = "checkBox3";
             checkBox3.Size = new Size(60, 19);
             checkBox3.TabIndex = 2;
@@ -91,7 +91,7 @@
             // checkBox4
             // 
             checkBox4.AutoSize = true;
-            checkBox4.Location = new Point(252, 178);
+            checkBox4.Location = new Point(296, 178);
             checkBox4.Name = "checkBox4";
             checkBox4.Size = new Size(60, 19);
             checkBox4.TabIndex = 3;
@@ -102,39 +102,39 @@
             // checkBox5
             // 
             checkBox5.AutoSize = true;
-            checkBox5.Location = new Point(318, 128);
+            checkBox5.Location = new Point(33, 128);
             checkBox5.Name = "checkBox5";
-            checkBox5.Size = new Size(42, 19);
+            checkBox5.Size = new Size(51, 19);
             checkBox5.TabIndex = 4;
-            checkBox5.Text = "OR";
+            checkBox5.Text = "AND";
             checkBox5.UseVisualStyleBackColor = true;
             checkBox5.CheckedChanged += checkBox5_CheckedChanged;
             // 
             // checkBox6
             // 
             checkBox6.AutoSize = true;
-            checkBox6.Location = new Point(318, 153);
+            checkBox6.Location = new Point(33, 153);
             checkBox6.Name = "checkBox6";
-            checkBox6.Size = new Size(42, 19);
+            checkBox6.Size = new Size(51, 19);
             checkBox6.TabIndex = 5;
-            checkBox6.Text = "OR";
+            checkBox6.Text = "AND";
             checkBox6.UseVisualStyleBackColor = true;
             checkBox6.CheckedChanged += checkBox6_CheckedChanged;
             // 
             // checkBox7
             // 
             checkBox7.AutoSize = true;
-            checkBox7.Location = new Point(318, 178);
+            checkBox7.Location = new Point(33, 178);
             checkBox7.Name = "checkBox7";
-            checkBox7.Size = new Size(42, 19);
+            checkBox7.Size = new Size(51, 19);
             checkBox7.TabIndex = 6;
-            checkBox7.Text = "OR";
+            checkBox7.Text = "AND";
             checkBox7.UseVisualStyleBackColor = true;
             checkBox7.CheckedChanged += checkBox7_CheckedChanged;
             // 
             // button1
             // 
-            button1.Location = new Point(163, 229);
+            button1.Location = new Point(130, 229);
             button1.Name = "button1";
             button1.Size = new Size(118, 23);
             button1.TabIndex = 8;
@@ -144,70 +144,70 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(40, 36);
+            textBox1.Location = new Point(84, 36);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(100, 23);
             textBox1.TabIndex = 9;
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(146, 36);
+            textBox2.Location = new Point(190, 36);
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(100, 23);
             textBox2.TabIndex = 10;
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(40, 99);
+            textBox3.Location = new Point(84, 99);
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(100, 23);
             textBox3.TabIndex = 11;
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(146, 99);
+            textBox4.Location = new Point(190, 99);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(100, 23);
             textBox4.TabIndex = 12;
             // 
             // textBox5
             // 
-            textBox5.Location = new Point(40, 124);
+            textBox5.Location = new Point(84, 124);
             textBox5.Name = "textBox5";
             textBox5.Size = new Size(100, 23);
             textBox5.TabIndex = 13;
             // 
             // textBox6
             // 
-            textBox6.Location = new Point(146, 124);
+            textBox6.Location = new Point(190, 124);
             textBox6.Name = "textBox6";
             textBox6.Size = new Size(100, 23);
             textBox6.TabIndex = 14;
             // 
             // textBox7
             // 
-            textBox7.Location = new Point(40, 149);
+            textBox7.Location = new Point(84, 149);
             textBox7.Name = "textBox7";
             textBox7.Size = new Size(100, 23);
             textBox7.TabIndex = 15;
             // 
             // textBox8
             // 
-            textBox8.Location = new Point(146, 149);
+            textBox8.Location = new Point(190, 149);
             textBox8.Name = "textBox8";
             textBox8.Size = new Size(100, 23);
             textBox8.TabIndex = 16;
             // 
             // textBox9
             // 
-            textBox9.Location = new Point(40, 174);
+            textBox9.Location = new Point(84, 174);
             textBox9.Name = "textBox9";
             textBox9.Size = new Size(100, 23);
             textBox9.TabIndex = 17;
             // 
             // textBox10
             // 
-            textBox10.Location = new Point(146, 174);
+            textBox10.Location = new Point(190, 174);
             textBox10.Name = "textBox10";
             textBox10.Size = new Size(100, 23);
             textBox10.TabIndex = 18;
@@ -215,7 +215,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 18);
+            label1.Location = new Point(84, 18);
             label1.Name = "label1";
             label1.Size = new Size(55, 15);
             label1.TabIndex = 19;
@@ -224,7 +224,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(146, 18);
+            label2.Location = new Point(190, 18);
             label2.Name = "label2";
             label2.Size = new Size(71, 15);
             label2.TabIndex = 20;
@@ -233,7 +233,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(40, 81);
+            label3.Location = new Point(84, 81);
             label3.Name = "label3";
             label3.Size = new Size(50, 15);
             label3.TabIndex = 21;
@@ -242,7 +242,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(146, 81);
+            label4.Location = new Point(190, 81);
             label4.Name = "label4";
             label4.Size = new Size(34, 15);
             label4.TabIndex = 22;
@@ -251,41 +251,38 @@
             // checkBox8
             // 
             checkBox8.AutoSize = true;
-            checkBox8.Location = new Point(360, 128);
+            checkBox8.Location = new Point(56, 302);
             checkBox8.Name = "checkBox8";
-            checkBox8.Size = new Size(51, 19);
+            checkBox8.Size = new Size(84, 19);
             checkBox8.TabIndex = 23;
-            checkBox8.Text = "AND";
+            checkBox8.Text = "Need to fix";
             checkBox8.UseVisualStyleBackColor = true;
-            checkBox8.CheckedChanged += checkBox8_CheckedChanged;
             // 
             // checkBox9
             // 
             checkBox9.AutoSize = true;
-            checkBox9.Location = new Point(360, 153);
+            checkBox9.Location = new Point(145, 302);
             checkBox9.Name = "checkBox9";
-            checkBox9.Size = new Size(51, 19);
+            checkBox9.Size = new Size(84, 19);
             checkBox9.TabIndex = 24;
-            checkBox9.Text = "AND";
+            checkBox9.Text = "Need to fix";
             checkBox9.UseVisualStyleBackColor = true;
-            checkBox9.CheckedChanged += checkBox9_CheckedChanged;
             // 
             // checkBox10
             // 
             checkBox10.AutoSize = true;
-            checkBox10.Location = new Point(360, 178);
+            checkBox10.Location = new Point(234, 302);
             checkBox10.Name = "checkBox10";
-            checkBox10.Size = new Size(51, 19);
+            checkBox10.Size = new Size(84, 19);
             checkBox10.TabIndex = 25;
-            checkBox10.Text = "AND";
+            checkBox10.Text = "Need to fix";
             checkBox10.UseVisualStyleBackColor = true;
-            checkBox10.CheckedChanged += checkBox10_CheckedChanged;
             // 
             // Form2
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(461, 354);
+            ClientSize = new Size(383, 354);
             Controls.Add(checkBox10);
             Controls.Add(checkBox9);
             Controls.Add(checkBox8);
